@@ -1,4 +1,9 @@
-<message message="{{ message }}"></message>
-<p>Button po kliknięciu ma zostać zdezaktywowany na 4 sekundy :)</p>
+<heading-coponent></heading-coponent>
 
-<button class="add-to-cart-button">Do koszyka</button>
+<button
+  class="add-to-cart-button"
+  (click)="addToCart()"
+  [disabled]="!buttonVisibility"
+>
+  Do koszyka - zmienna
+</button>
