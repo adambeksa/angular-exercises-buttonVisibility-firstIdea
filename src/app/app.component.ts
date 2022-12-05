@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { addToCartVisibiltyService } from './app.service';
 
 @Component({
