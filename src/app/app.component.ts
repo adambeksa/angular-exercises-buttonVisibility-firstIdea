@@ -32,12 +32,14 @@ export class AppComponent {
   }
 
   private fetchAddToCartVisibility(): void {
-    // Jeżeli użyję subscribe tak jak poniżej to nie muszę używać unsubscribe?
+    // W pierwszej kolejności użyłem poniższego zapisu ale nie mogłem
+    // odsubskrybować subskrypcji. Który z poniszych zapisów jest lepszy?
     // this.buttonVisibility$.subscribe((res) => {
     //   this.buttonVisibility = res;
     // });
 
-    //Jeżeli użyję subscribe tak jak poniżej to muszę używać unsubscribe?
+    // Jeżeli użyję subscribe tak jak poniżej to muszę używać unsubscribe?
+    // Zakładam, że tak. Pytam w celu potwierdzenia.
     this.mySubscription = this.buttonVisibility$.subscribe((res) => {
       this.buttonVisibility = res;
     });
