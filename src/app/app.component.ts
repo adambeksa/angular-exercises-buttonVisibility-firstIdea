@@ -10,11 +10,16 @@ import { addToCartVisibiltyService } from './app.service';
 export class AppComponent {
   buttonVisibility$: Observable<boolean>;
   buttonVisibility: boolean = true;
+  private mySubscription;
 
   constructor(private addToCartVisibiltyService: addToCartVisibiltyService) {}
 
   ngOnInit(): void {
     this.setupDataSources();
+  }
+
+  ngOnDestroy(): void {
+    this.mySubscription.unsubscribe();
   }
 
   addToCart(): void {
@@ -27,7 +32,13 @@ export class AppComponent {
   }
 
   private fetchAddToCartVisibility(): void {
-    this.buttonVisibility$.subscribe((res) => {
+    // Jeżeli użyję subscribe tak jak poniżej to nie muszę używać unsubscribe?
+    // this.buttonVisibility$.subscribe((res) => {
+    //   this.buttonVisibility = res;
+    // });
+
+    //Jeżeli użyję subscribe tak jak poniżej to muszę używać unsubscribe?
+    this.mySubscription = this.buttonVisibility$.subscribe((res) => {
       this.buttonVisibility = res;
     });
   }
